@@ -1,0 +1,22 @@
+Stas\JamBundle\Entity\Jam\Type:
+    type0:
+        name: Raspberry
+    type1:
+        name: Strawberry
+    type2:
+        name: Gooseberry
+    type3:
+        name: Drain
+    type4:
+        name: Apple
+    type5:
+        name: Plum
+
+Stas\JamBundle\Entity\Year:
+    year{1..10}:
+        name (unique): <numberBetween('2005', '2014')>
+
+Stas\JamBundle\Entity\Jam\Jar:
+    jar{1..50}:
+        type: @type*
+        year: @year*
