@@ -118,22 +118,19 @@ class JarAdmin extends Admin
      *
      * @throws HttpException
      */
-    public function prePersist($jar)
+    public function postPersist($jar)
     {
         $container = $this->getConfigurationPool()->getContainer();
-        $formData = $this->getRequest()->request->get($this->getUniqid());
-        /** @var JarService $jarService */
-        $jarService = $container->get('stas_jam.service.jam.jar');
-        $jarService->multiCreate($jar, $formData['amount']);
-
+        $amount = $this->getForm()->get('amount')->getData();
+        if ($amount > 1) {
+            /** @var JarService $jarService */
+            $jarService = $container->get('stas_jam.service.jam.jar');
+            $jarService->multiCreate($jar, $amount - 1);
+        }
         $session = $container->get('session');
         $session->getFlashBag()
             ->add('sonata_flash_success', $this->trans('stas.jam.jam.jar.multiple_creation_success',
-                array('%count%' => $formData['amount'])));
-
-        throw new HttpException(303, 'See Other', null, array(
-            'Location' => $this->getRouteGenerator()->generateUrl($this, 'list')
-        ));
+                array('%count%' => $amount)));
     }
 
     /**
