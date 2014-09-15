@@ -1,0 +1,19 @@
+admin.dashboard.main: "Jam"
+admin.dashboard.jam.jar: "Jar"
+admin.dashboard.jam.type: "Type"
+admin.dashboard.year: "Year"
+
+stas.jam.jam.type.id: "ID"
+stas.jam.jam.type.name: "Name"
+
+stas.jam.year.id: "ID"
+stas.jam.year.name: "Year"
+
+stas.jam.jam.jar.id: "ID"
+stas.jam.jam.jar.type: "Type"
+stas.jam.jam.jar.type.choose: "Choose"
+stas.jam.jam.jar.year: "Year"
+stas.jam.jam.jar.year.choose: "Choose"
+stas.jam.jam.jar.comment: "Comment"
+stas.jam.jam.jar.amount: "Amount"
+stas.jam.jam.jar.multiple_creation_success: "Successfully added %count% jar(s)."

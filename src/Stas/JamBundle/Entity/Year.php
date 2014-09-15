@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Year
  *
  * @ORM\Table("year")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Stas\JamBundle\Repository\EnumerationRepository")
  */
 class Year
 {

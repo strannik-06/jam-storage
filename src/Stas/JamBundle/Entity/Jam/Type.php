@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Type
  *
  * @ORM\Table("type")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Stas\JamBundle\Repository\EnumerationRepository")
  */
 class Type
 {

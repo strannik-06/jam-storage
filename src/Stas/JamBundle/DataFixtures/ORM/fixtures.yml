@@ -17,6 +17,6 @@ Stas\JamBundle\Entity\Year:
         name (unique): <numberBetween('2005', '2014')>
 
 Stas\JamBundle\Entity\Jam\Jar:
-    jar{1..50}:
+    jar{1..10}:
         type: @type*
         year: @year*

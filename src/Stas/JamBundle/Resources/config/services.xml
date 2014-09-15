@@ -5,17 +5,44 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="stas.jam.jar.admin.class">Stas\JamBundle\Admin\Jam\JarAdmin</parameter>
+        <parameter key="stas_jam.jam.jar.admin.class">Stas\JamBundle\Admin\Jam\JarAdmin</parameter>
+        <parameter key="stas_jam.jam.type.admin.class">Stas\JamBundle\Admin\Jam\TypeAdmin</parameter>
+        <parameter key="stas_jam.year.admin.class">Stas\JamBundle\Admin\YearAdmin</parameter>
+        <parameter key="stas_jam.service.jam.jar.class">Stas\JamBundle\Service\Jam\JarService</parameter>
+        <parameter key="stas_jam.utils.clone_factory.class">Stas\JamBundle\Utils\CloneFactory</parameter>
     </parameters>
 
     <services>
-        <service id="stas.jam.jar.admin" class="%stas.jam.jar.admin.class%">
+        <service id="stas_jam.jam.jar.admin" class="%stas_jam.jam.jar.admin.class%">
             <tag name="sonata.admin" manager_type="orm" group="admin.dashboard.main"
-                 label_catalogue="messages" label="Jar" />
+                 label_catalogue="messages" label="admin.dashboard.jam.jar" />
             <argument />
             <argument>Stas\JamBundle\Entity\Jam\Jar</argument>
             <argument>SonataAdminBundle:CRUD</argument>
         </service>
+
+        <service id="stas_jam.jam.type.admin" class="%stas_jam.jam.type.admin.class%">
+            <tag name="sonata.admin" manager_type="orm" group="admin.dashboard.main"
+                 label_catalogue="messages" label="admin.dashboard.jam.type" />
+            <argument />
+            <argument>Stas\JamBundle\Entity\Jam\Type</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+
+        <service id="stas_jam.year.admin" class="%stas_jam.year.admin.class%">
+            <tag name="sonata.admin" manager_type="orm" group="admin.dashboard.main"
+                 label_catalogue="messages" label="Year" />
+            <argument />
+            <argument>Stas\JamBundle\Entity\Year</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+
+        <service id="stas_jam.service.jam.jar" class="%stas_jam.service.jam.jar.class%">
+            <argument type="service" id="doctrine.orm.default_entity_manager" />
+            <argument type="service" id="stas_jam.utils.clone_factory" />
+        </service>
+
+        <service id="stas_jam.utils.clone_factory" class="%stas_jam.utils.clone_factory.class%" />
     </services>
 
 </container>
